@@ -1,6 +1,6 @@
 const AppError = require('./appError');
 
-module.exports = (error, _req, res) => {
+module.exports = (error, _req, res, _next) => {
   error.statusCode = error.statusCode || 500;
   error.status = (error.statusCode.toString()).includes('4') ? 'fail' : 'error';
   let responseObj = {};
