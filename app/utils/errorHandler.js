@@ -26,6 +26,5 @@ module.exports = (error, _req, res) => {
       message: errorObj.message,
       errorObj
     };
-  console.log('as', responseObj);
   res.status(errorObj.statusCode).send(responseObj);
 };

@@ -16,7 +16,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(express.json());
 app.use(morgan('tiny'));
 
 app.use((_req, res, next) => {
@@ -25,8 +24,7 @@ app.use((_req, res, next) => {
 });
 
 app.use(require('./routes'));
-
-app.use(errorHandler)
+app.use(errorHandler);
 
 mongoose
     .connect(process.env.DB_STRING)
@@ -34,7 +32,7 @@ mongoose
 
 const PORT = process.env.PORT || 27031;
 
-app.listen(PORT, 'localhost', () => {
+app.listen(PORT, '0.0.0.0', () => {
     console.log('Server up and listening on port ', PORT);
 });
 
